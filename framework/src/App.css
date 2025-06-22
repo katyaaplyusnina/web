@@ -1,11 +1,9 @@
-/* Сброс стилей и базовые настройки */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Переменные CSS */
 :root {
     --bg-color: #000000;
     --primary-color: #fb923c; /* orange-400 */
@@ -35,7 +33,6 @@
     --valid-color: #34d399;
 }
 
-/* Базовые стили для body */
 body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #1e130c 0%, #000000 70%);
@@ -46,7 +43,6 @@ body {
     min-height: 100vh;
 }
 
-/* Контейнер */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -55,7 +51,6 @@ body {
     height: 100%;
 }
 
-/* Шапка */
 .header {
     background-color: transparent;
     padding: 1rem;
@@ -83,7 +78,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    /* Для старых браузеров оставляем основной цвет */
     color: var(--primary-color);
 }
 
@@ -127,7 +121,6 @@ body {
     width: 100%;
 }
 
-/* Основной контент */
 .main {
     flex-grow: 1;
     display: flex;
@@ -176,7 +169,6 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Социальные кнопки */
 .social-login {
     margin-bottom: 2rem;
 }
@@ -259,7 +251,6 @@ body {
     color: #333;
 }
 
-/* Разделитель */
 .divider {
     text-align: center;
     margin: 2rem 0;
@@ -285,7 +276,6 @@ body {
     z-index: 1;
 }
 
-/* Форма */
 .auth-form {
     display: flex;
     flex-direction: column;
@@ -330,7 +320,6 @@ body {
     75% { transform: translateX(5px); }
 }
 
-/* Поле пароля */
 .password-input-wrapper {
     position: relative;
 }
@@ -357,7 +346,6 @@ body {
     fill: currentColor;
 }
 
-/* Сообщения об ошибках */
 .error-message {
     color: var(--error-color);
     font-size: 0.875rem;
@@ -369,7 +357,6 @@ body {
     display: none;
 }
 
-/* Требования к паролю */
 .requirements {
     background: var(--background-secondary);
     border-radius: var(--radius-sm);
@@ -407,7 +394,6 @@ body {
     color: var(--success-color);
 }
 
-/* Чекбокс */
 .checkbox-group {
     flex-direction: row;
     align-items: center;
@@ -457,7 +443,6 @@ body {
     font-size: 0.875rem;
 }
 
-/* Кнопка отправки */
 .submit-btn {
     width: 100%;
     padding: 0.75rem;
@@ -484,7 +469,6 @@ body {
     cursor: not-allowed;
 }
 
-/* Спиннер загрузки */
 .loading-spinner {
     width: 20px;
     height: 20px;
@@ -499,7 +483,6 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* Ссылки */
 .form-links {
     display: flex;
     justify-content: space-between;
@@ -519,7 +502,6 @@ body {
     text-decoration: underline;
 }
 
-/* Подвал */
 .footer {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -557,14 +539,12 @@ body {
     color: var(--primary-color);
 }
 
-/* Новые стили для котов */
 .pop-cat-image {
     position: absolute;
     width: 150px;
     height: auto;
     pointer-events: none;
     z-index: 9999;
-    /* Центрируем изображение по курсору */
     transform: translate(-50%, -50%); 
     animation: pop-cat-anim 0.7s ease-out forwards;
 }
@@ -584,7 +564,6 @@ body {
     }
 }
 
-/* Новые стили для пульсирующей подсказки */
 .pulsating-hint {
     position: fixed;
     bottom: 30px;
@@ -636,7 +615,6 @@ body {
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .container {
         padding: 0 0.75rem;
@@ -701,7 +679,6 @@ body {
     }
 }
 
-/* Псевдоселекторы */
 .form-input:focus {
     outline: none;
     border-color: var(--border-focus);
@@ -728,7 +705,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Селекторы по атрибуту */
 input[type="email"] {
     font-family: inherit;
 }
@@ -741,7 +717,6 @@ button[type="submit"] {
     font-family: inherit;
 }
 
-/* Селекторы по идентификатору */
 #authForm {
     width: 100%;
 }
@@ -754,7 +729,6 @@ button[type="submit"] {
     border-color: var(--error-color);
 }
 
-/* Селекторы по тегу */
 h1, h2, h3 {
     margin: 0;
     line-height: 1.2;
@@ -798,7 +772,6 @@ input {
     margin-right: auto;
 }
 
-/* Удаляем старые стили для эффекта курсора */
 .cursor-glow {
     display: none;
 }
@@ -810,4 +783,45 @@ input {
 .form-link:hover {
     text-decoration: underline;
     color: var(--primary-color-hover);
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+    color: var(--text-color-light);
+}
+
+.requirement-item .requirement-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
+    color: var(--text-color-light);
+    transition: color 0.3s;
+}
+
+.requirement-item.valid {
+    color: var(--text-color);
+}
+
+.requirement-item.valid .requirement-icon {
+    color: var(--valid-color);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-input {
+    display: none;
 } 

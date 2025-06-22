@@ -61,7 +61,7 @@ const setupEventListeners = () => {
 
 const setupPopCatOnClick = () => {
     document.addEventListener('click', (e) => {
-        if (e.target.closest('#authForm')) {
+        if (e.target.closest('.form-container')) {
             return;
         }
 
@@ -84,7 +84,7 @@ const setupPopCatOnClick = () => {
 
 const setupPulsatingHint = () => {
     const hint = document.getElementById('pulsatingHint');
-    const form = document.getElementById('authForm');
+    const form = document.querySelector('.form-container');
 
     if (!hint || !form) return;
 

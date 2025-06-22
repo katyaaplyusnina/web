@@ -1,13 +1,14 @@
 import React from 'react'
 
-const Checkbox = ({ id, label, register }) => {
+const Checkbox = React.forwardRef(({ id, label, ...props }, ref) => {
   return (
     <label htmlFor={id} className="checkbox-container">
       <input 
         type="checkbox" 
         id={id} 
         className="checkbox-input"
-        {...register} 
+        ref={ref}
+        {...props}
       />
       <span className="checkbox-custom">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -17,6 +18,6 @@ const Checkbox = ({ id, label, register }) => {
       {label}
     </label>
   )
-}
+});
 
 export default Checkbox 

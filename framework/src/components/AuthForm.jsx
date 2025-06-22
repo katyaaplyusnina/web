@@ -27,7 +27,12 @@ const AuthForm = () => {
     setValue,
     formState: { errors, isValid }
   } = useForm({
-    mode: 'onTouched'
+    mode: 'onTouched',
+    defaultValues: {
+      email: '',
+      password: '',
+      remember: false,
+    }
   })
 
   const watchedPassword = watch('password', '')
@@ -139,49 +144,52 @@ const AuthForm = () => {
   }
 
   return (
-    <section className={`auth-section ${isShaking ? 'shake' : ''}`}>
+    <section className={`form-container ${isShaking ? 'shake' : ''}`}>
       <h2 className="auth-title text-gradient">Вход в систему</h2>
       <p className="auth-subtitle">Войдите в свой аккаунт для продолжения</p>
       
-      <form className="auth-form" onSubmit={handleSubmit(onValid, onInvalid)}>
+      <form onSubmit={handleSubmit(onValid, onInvalid)} noValidate>
         <SocialLogin />
         
         <FormInput
           id="email"
           label="Email или телефон"
           type="email"
-          placeholder="Введите email или телефон"
-          error={errors.email?.message}
-          {...register('email', {
-            required: true,
-            validate: validateEmail
+          placeholder="you@example.com"
+          error={errors.email}
+          {...register('email', { 
+            required: 'Email обязателен',
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: 'Введите корректный email'
+            }
           })}
         />
-
-        <PasswordInput
+        
+        <PasswordInput 
+          id="password"
           label="Пароль"
-          placeholder="Введите пароль"
-          showPassword={showPassword}
-          setShowPassword={setShowPassword}
-          error={errors.password?.message}
-          requirements={passwordRequirements}
-          {...register('password', {
-            required: true,
-            validate: validatePassword
+          placeholder="••••••••"
+          error={errors.password}
+          password={watchedPassword}
+          {...register('password', { 
+            required: 'Пароль обязателен',
           })}
         />
 
-        <Checkbox
-          label="Сохранить сессию"
-          {...register('remember')}
-        />
+        <div className="form-options">
+          <Checkbox 
+            id="remember"
+            label="Запомнить меня"
+            {...register('remember')}
+          />
+          <FormLinks />
+        </div>
 
         <SubmitButton 
-          disabled={!isValid || isSubmitting}
-          isSubmitting={isSubmitting}
+          text="Войти"
+          isLoading={isSubmitting}
         />
-
-        <FormLinks />
       </form>
     </section>
   )

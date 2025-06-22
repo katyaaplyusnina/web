@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormInput = ({ id, label, type, placeholder, register, error }) => {
+const FormInput = React.forwardRef(({ id, label, type, placeholder, error, ...props }, ref) => {
   return (
     <div className="form-group">
       <label htmlFor={id} className="input-label">{label}</label>
@@ -10,12 +10,13 @@ const FormInput = ({ id, label, type, placeholder, register, error }) => {
           id={id}
           className="form-input"
           placeholder={placeholder}
-          {...register}
+          ref={ref}
+          {...props}
         />
       </div>
       {error && <p className="error-message">{error.message}</p>}
     </div>
   )
-}
+});
 
 export default FormInput 
